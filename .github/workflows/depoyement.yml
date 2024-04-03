@@ -1,0 +1,50 @@
+name: Deploy React App to EC2 and Delete Instance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies and build React app
+        run: |
+          cd path/to/react/app
+          npm install
+          npm run build
+
+      - name: Install AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Create EC2 instance
+        id: create_ec2
+        run: |
+          instance_id=$(aws ec2 run-instances --image-id ami-xxxxxxxx --instance-type t2.micro --security-group-ids sg-xxxxxxxx --subnet-id subnet-xxxxxxxx --key-name your-key-name --query 'Instances[0].InstanceId' --output text)
+          echo "::set-output name=instance_id::$instance_id"
+
+      - name: Wait for EC2 instance to initialize
+        run: sleep 30s
+
+      - name: Deploy React app to EC2 instance
+        run: |
+          instance_id=${{ steps.create_ec2.outputs.instance_id }}
+          ssh -i path/to/your/key.pem ec2-user@your-ec2-public-ip 'sudo apt update && sudo apt install nginx -y'
+          scp -i path/to/your/key.pem -r path/to/react/app/build/* ec2-user@your-ec2-public-ip:/usr/share/nginx/html/
+
+      - name: Wait for 10 minutes
+        run: sleep 600s
+
+      - name: Delete EC2 instance
+        run: |
+          instance_id=${{ steps.create_ec2.outputs.instance_id }}
+          aws ec2 terminate-instances --instance-ids $instance_id

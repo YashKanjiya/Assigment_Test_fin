@@ -1,0 +1,18 @@
+security.jwt.token.secret-key: my-secret-key
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Assigment_1  # Database URL
+    username: postgres                               # Database username
+    password: yash                               # Database password
+    driver-class-name: org.postgresql.Driver           # PostgreSQL driver class name
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # Hibernate dialect for PostgreSQL
+    hibernate:
+      ddl-auto: update                                     # Hibernate DDL auto (update, create, none, validate)
+    show-sql: true                                          # Show SQL queries in console
+
+server:
+  port: 9292                                               # Port number for the Spring Boot application
+
+# Additional configurations can be added as needed

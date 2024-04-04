@@ -55,7 +55,7 @@ jobs:
       - name: Delete Old Container
         run: docker rm -f reactContainer
       - name: Run docker container
-        run: docker run -d -p 3000:80 --name reactContainer ykanjiya/reactapp  
+        run: docker run -d -p 3000:80 --name reactContainer ykanjiya/reactapp:v1  
     
       
 

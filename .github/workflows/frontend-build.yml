@@ -37,6 +37,6 @@ jobs:
         with:
          context: ./Frontend/closefrontend/
          push: true
-         tag: ykanjiya/reactapp:latest
+         tag: ykanjiya/reactapp:v1
       
 

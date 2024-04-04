@@ -1,5 +1,3 @@
-security.jwt.token.secret-key: my-secret-key
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/Assigment_1  # Database URL

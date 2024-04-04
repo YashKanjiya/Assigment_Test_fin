@@ -1,5 +1,7 @@
 package com.example.closebacked.config;
 
+
+
 import java.util.Arrays;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -19,15 +21,12 @@ public class WebConfig {
     private static final Long MAX_AGE = 3600L;
     private static final int CORS_FILTER_ORDER = -102;
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	@Bean
+    @Bean
     public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:3000");
-        
         config.setAllowedHeaders(Arrays.asList(
                 HttpHeaders.AUTHORIZATION,
                 HttpHeaders.CONTENT_TYPE,

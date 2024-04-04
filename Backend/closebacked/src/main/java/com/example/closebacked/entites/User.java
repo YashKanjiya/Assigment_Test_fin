@@ -1,6 +1,5 @@
 package com.example.closebacked.entites;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

@@ -29,13 +29,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t ykanjiya/reactapp:latest ./Frontend/closefrontend
-          docker tag cool ykanjiya/reactapp:latest
+          docker tag ykanjiya/reactapp:latest ykanjiya/reactapp:latest
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push ykanjiya/reactapp:cool
+        run: docker push ykanjiya/reactapp:latest
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

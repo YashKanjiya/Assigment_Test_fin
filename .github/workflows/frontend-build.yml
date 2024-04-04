@@ -32,11 +32,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push Docker Image
+      - name: Build Docker Image
         uses: docker/build-push-action@v4
         with:
-         context: Frontend/closefrontend/
-         push: true
-         tag: ykanjiya/reactapp:v1
+          context: Frontend/closefrontend/
+          push: false
+          tag: ykanjiya/reactapp:v1
       
 

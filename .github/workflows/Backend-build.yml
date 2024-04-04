@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ykanjiya/springbootapp:latest 
+          docker build -t ykanjiya/springbootapp:latest ./Backend/closebacked
           docker tag ykanjiya/springbootapp:latest ykanjiya/springbootapp:latest
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

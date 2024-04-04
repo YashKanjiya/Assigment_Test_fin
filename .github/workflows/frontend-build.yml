@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ykanjiya/reactapp:latest ./frontend/react-app
+          docker build -t ykanjiya/reactapp:latest ./Frontend/closefrontend
           docker tag ykanjiya/reactapp:latest ykanjiya/reactapp:latest
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

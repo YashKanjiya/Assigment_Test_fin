@@ -20,7 +20,7 @@ jobs:
            distribution: 'adopt'
 
       - name: Set execute permission for mvnw script
-        run: chmod +x mvnw
+        run: chmod +x Backend/closebacked/mvnw
   
       - name: Build Spring Boot application
         run: ./mvnw package  # Adjust the Maven or Gradle command for your project

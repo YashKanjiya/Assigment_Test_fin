@@ -35,7 +35,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4
         with:
-         context: ./Frontend/closefrontend/
+         context: Frontend/closefrontend/
          push: true
          tag: ykanjiya/reactapp:v1
       

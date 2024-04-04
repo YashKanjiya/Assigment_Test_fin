@@ -38,5 +38,12 @@ jobs:
           context: Frontend/closefrontend/
           push: false
           tag: ykanjiya/reactapp:v1
+          
+      - name: Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: Frontend/closefrontend/
+          push: true  
+          tags: ykanjiya/reactapp:v1 
       
 

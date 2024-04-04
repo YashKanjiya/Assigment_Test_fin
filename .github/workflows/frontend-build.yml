@@ -1,1 +1,42 @@
+name: Frontend Build and Docker Image Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend/closefrontend   # Path to the frontend folder
+
+      - name: Build React app
+        run: npm run build
+        working-directory: ./frontend/closefrontend    # Path to the frontend folder
+
+      - name: Build Docker image
+        run: |
+          docker build -t ykanjiya/reactapp:latest ./frontend/react-app
+          docker tag ykanjiya/reactapp:latest ykanjiya/reactapp:latest
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+
+      - name: Push Docker image to Docker Hub
+        run: docker push ykanjiya/reactapp:latest
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 

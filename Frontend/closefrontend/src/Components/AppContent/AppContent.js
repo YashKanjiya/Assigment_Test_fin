@@ -75,7 +75,7 @@ export default class AppContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            componentToShow: "welcome"
+            componentToShow: "welcome to Goa"
         }
     };
 

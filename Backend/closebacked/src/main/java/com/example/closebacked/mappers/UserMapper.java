@@ -1,11 +1,10 @@
-package com.example.closebacked.UserMapper;
-
+package com.example.closebacked.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.example.closebacked.dto.SignUpDto;
-import com.example.closebacked.dto.UserDto;
+import com.example.closebacked.dtos.SignUpDto;
+import com.example.closebacked.dtos.UserDto;
 import com.example.closebacked.entites.User;
 
 @Mapper(componentModel = "spring")

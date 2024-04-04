@@ -1,7 +1,5 @@
-package com.example.closebacked.dto;
+package com.example.closebacked.dtos;
 
-
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,18 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SignUpDto {
+public class UserDto {
 
-    @NotEmpty
+    private Long id;
     private String firstName;
-
-    @NotEmpty
     private String lastName;
-
-    @NotEmpty
     private String login;
-
-    @NotEmpty
-    private char[] password;
+    private String token;
 
 }

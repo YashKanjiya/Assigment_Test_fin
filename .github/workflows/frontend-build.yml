@@ -24,7 +24,7 @@ jobs:
 
       - name: Build React app
         run: npm run build
-        working-directory: ./frontend/closefrontend/    # Path to the frontend folder
+        working-directory: ./frontend/closefrontend/build    # Path to the frontend folder
 
       - name: Build Docker image
         run: |

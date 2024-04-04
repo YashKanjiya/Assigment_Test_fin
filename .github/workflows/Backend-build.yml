@@ -20,6 +20,7 @@ jobs:
 
       - name: Build Spring Boot application
         run: ./mvnw package  # Adjust the Maven or Gradle command for your project
+        working-directory: ./Backend/closebacked
 
       - name: Build Docker image
         run: |

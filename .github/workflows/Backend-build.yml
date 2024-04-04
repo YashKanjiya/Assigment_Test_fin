@@ -1,1 +1,36 @@
+name: Spring Boot Build and Docker Image Push
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'  # Adjust the Java version as needed
+
+      - name: Build Spring Boot application
+        run: ./mvnw package  # Adjust the Maven or Gradle command for your project
+
+      - name: Build Docker image
+        run: |
+          docker build -t ykanjiya/springbootapp:latest 
+          docker tag ykanjiya/springbootapp:latest ykanjiya/springbootapp:latest
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+
+      - name: Push Docker image to Docker Hub
+        run: docker push ykanjiya/springbootapp:latest
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

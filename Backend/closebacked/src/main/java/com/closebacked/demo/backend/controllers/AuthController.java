@@ -23,6 +23,11 @@ public class AuthController {
     private final UserService userService;
     private final UserAuthenticationProvider userAuthenticationProvider;
 
+    @GetMapping("/messages")
+    public ResponseEntity<List<String>> messages() {
+        return ResponseEntity.ok(Arrays.asList("first", "second"));
+    }
+    
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody @Valid CredentialsDto credentialsDto) {
         UserDto userDto = userService.login(credentialsDto);

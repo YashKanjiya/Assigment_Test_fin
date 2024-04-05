@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  build:  
+  build:
+    if: ${{ contains(github.event.commits[0].added, './Frontend/') || contains(github.event.commits[0].modified, './Frontend/') }}
     runs-on: ubuntu-latest
 
     steps:

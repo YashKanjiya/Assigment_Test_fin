@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    if: ${{ contains(github.event.commits[0].added, './Backend/') || contains(github.event.commits[0].modified, './Backend/') }}
     runs-on: ubuntu-latest
 
     steps:

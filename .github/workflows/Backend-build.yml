@@ -19,21 +19,20 @@ jobs:
            java-version: '17'
            distribution: 'adopt'
 
-  
       - name: Build Spring Boot application
         run: mvn clean install -DskipTests
         working-directory: ./Backend/closebacked
 
-      - name: Build Docker image
-        run: |
-          docker build -t ykanjiya/springbootapp:latest ./Backend/closebacked
-          docker tag ykanjiya/springbootapp:latest ykanjiya/springbootapp:latest
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-
-      - name: Push Docker image to Docker Hub
-        run: docker push ykanjiya/springbootapp:latest
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      - name: Build Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: Backend/closebacked/
+          push: false
+          tag: ykanjiya/springapp:v2
+          
+      - name: Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: Backend/closebacked/
+          push: true  
+          tags: ykanjiya/springapp:v2 

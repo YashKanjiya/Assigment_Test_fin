@@ -1,0 +1,8 @@
+spring:
+  datasource:
+      url: jdbc:postgresql://localhost:5432/Assigment_1  # Database URL
+      username: postgres                               # Database username
+      password: yash  
+  
+  jpa:
+    show-sql: true

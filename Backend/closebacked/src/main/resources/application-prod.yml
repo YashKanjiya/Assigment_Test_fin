@@ -2,4 +2,4 @@ spring:
   datasource:
       url: jdbc:postgresql://springboorapp.cdqiyik84wcf.ap-south-1.rds.amazonaws.com:5432/Assigment_1  # Database URL
       username: yash                            
-      password: yashyash 
+      password: kanjiyayash 

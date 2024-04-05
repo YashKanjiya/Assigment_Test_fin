@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: Pull image for docker hub
         run: docker pull ykanjiya/springapp:v2 
-      - name: Delete Old Container
-        run: docker rm -f springContainer
+      - name: Delete old container if exists
+        run: docker rm -f springContainer || true
       - name: Run docker container
         run: docker run -d -p 9292:9292 --name springContainer ykanjiya/springapp:v2 

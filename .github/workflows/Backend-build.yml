@@ -42,3 +42,15 @@ jobs:
           context: Backend/closebacked/
           push: true  
           tags: ykanjiya/springapp:v2 
+
+
+  deploy: 
+    needs: build
+    runs-on: aws-ec2
+    steps:
+      - name: Pull image for docker hub
+        run: docker pull ykanjiya/springapp:v2 
+      - name: Delete Old Container
+        run: docker rm -f springContainer
+      - name: Run docker container
+        run: docker run -d -p 9292:80 --name springContainer ykanjiya/springapp:v2 

@@ -53,4 +53,4 @@ jobs:
       - name: Delete old container if exists
         run: docker rm -f springContainer || true
       - name: Run docker container
-        run: docker run -d -p 9292:1234 --name springContainer ykanjiya/springapp:v2 
+        run: docker run -d -p 9292:9292 --name springContainer ykanjiya/springapp:v2 

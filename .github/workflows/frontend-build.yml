@@ -52,8 +52,8 @@ jobs:
     steps:
       - name: Pull image for docker hub
         run: docker pull ykanjiya/reactapp:v1 
-      - name: Delete Old Container
-        run: docker rm -f reactContainer
+      - name: Delete old container if exists
+        run: docker rm -f reactContainer || true
       - name: Run docker container
         run: docker run -d -p 3000:80 --name reactContainer ykanjiya/reactapp:v1  
     

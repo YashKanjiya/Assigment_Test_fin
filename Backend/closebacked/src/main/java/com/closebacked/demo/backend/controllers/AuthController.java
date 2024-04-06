@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import java.util.Arrays;
+import java.util.List;
 
 import com.closebacked.demo.backend.config.UserAuthenticationProvider;
 import com.closebacked.demo.backend.dtos.CredentialsDto;
@@ -23,6 +26,11 @@ public class AuthController {
     private final UserService userService;
     private final UserAuthenticationProvider userAuthenticationProvider;
 
+    @GetMapping("/messages")
+    public ResponseEntity<List<String>> messages() {
+        return ResponseEntity.ok(Arrays.asList("first", "second"));
+    }
+    
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody @Valid CredentialsDto credentialsDto) {
         UserDto userDto = userService.login(credentialsDto);

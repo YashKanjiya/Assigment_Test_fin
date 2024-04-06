@@ -12,7 +12,7 @@ export const setAuthHeader = (token) => {
     }
 };
 
-axios.defaults.baseURL = 'http://localhost:9292';
+axios.defaults.baseURL = 'http://13.127.232.248:9292';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const request = (method, url, data) => {
